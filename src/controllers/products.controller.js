@@ -11,6 +11,13 @@ const getProducts = catchAsync(async (req, res) => {
   res.send(result);
 });
 
+const listAllProducts = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['customerId']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await getProductsService.allProducts(filter, options);
+  res.send(result);
+});
+
 const addProduct = catchAsync(async (req, res) => {
   const user = await getProductsService.addProduct(req.body);
   res.status(httpStatus.CREATED).send(user);
@@ -19,4 +26,5 @@ const addProduct = catchAsync(async (req, res) => {
 module.exports = {
   getProducts,
   addProduct,
+  listAllProducts,
 };

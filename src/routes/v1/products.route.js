@@ -15,6 +15,8 @@ router
   .route('/')
   .get(validate(productsValidation.getProducts), getProductsController.getProducts)
   .post(validate(productsValidation.addProduct), getProductsController.addProduct);
+
+router.route('/list').get(getProductsController.listAllProducts);
 // .post(auth('manageUsers'), validate(userValidation.createUser), userController.createUser)
 // .get(auth('getUsers'), validate(userValidation.getUsers), userController.getUsers);
 
