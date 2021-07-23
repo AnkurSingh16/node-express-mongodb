@@ -28,7 +28,14 @@ const toJSON = (schema) => {
         }
       });
 
-      ret.id = ret._id.toString();
+      // if (ret.products) {
+      //   ret.products.forEach((product) => {
+      //     product.id = product._id;
+      //     delete product._id;
+      //   });
+      // }
+
+      // ret.id = ret._id.toString(); I don't want this
       delete ret._id;
       delete ret.__v;
       delete ret.createdAt;

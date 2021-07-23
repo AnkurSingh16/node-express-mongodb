@@ -1,5 +1,5 @@
 // const httpStatus = require('http-status');
-const { getProducts } = require('../models');
+const { getProducts, productList } = require('../models');
 
 const mockProducts = {
   customerId: '123456',
@@ -24,6 +24,26 @@ const mockProducts = {
     ],
   },
 };
+
+const mockProductList = {
+  products: [
+    {
+      id: '60fad63a692618b3bbed2737',
+      name: 'product a',
+      price: 1234,
+    },
+    {
+      id: '60fad63a692618b3bbed2738',
+      name: 'product b',
+      price: 1234,
+    },
+    {
+      id: '60fad63a692618b3bbed2739',
+      name: 'product c',
+      price: 1234,
+    },
+  ],
+};
 // const ApiError = require('../utils/ApiError');
 
 /**
@@ -45,6 +65,16 @@ const queryProducts = async (filter = {}, options) => {
   return products;
 };
 
+const allProducts = async (filter = {}, options) => {
+  let products = await productList.paginate(filter, options);
+  if (products.totalResults <= 0) {
+    // mocking some products in case there are no products in D, doing this for same user
+    await productList.create(mockProductList);
+    products = await productList.paginate(filter, options);
+  }
+  return products;
+};
+
 /**
  * Create a user
  * @param {Object} userBody
@@ -57,4 +87,5 @@ const addProduct = async (userBody) => {
 module.exports = {
   queryProducts,
   addProduct,
+  allProducts,
 };
