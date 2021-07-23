@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "dc7671e5-6e1c-4717-82f8-844310ebd696",
+		"name": "node-express-mongodb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8001/v1/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/v1/products/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/v1/products/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"products",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/v1/products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"basket\": {\n        \"basketId\": \"123\",\n        \"products\": [\n            {\n                \"id\": \"60fb03dabad0ece0a7e9feee\",\n                \"name\": \"Vasu\",\n                \"price\": \"1234\"\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8001/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
